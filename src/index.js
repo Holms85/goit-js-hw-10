@@ -16,7 +16,8 @@ function inputReader(e) {
   }
   fetchCountries(name)
     .then(response => {
-      // renderContryCard({ response })
+      console.log(response.length);
+      renderContryCard({ response })
       if (response.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
