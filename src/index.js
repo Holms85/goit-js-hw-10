@@ -43,7 +43,7 @@ function clearList() {
   refs.listCountry.innerHTML = '';
 }
 function renderContryCard(response) {
-  const markup = response
+  const markupCountryCard = response
     .map(
       el =>
         `<h1 class="country"><img class="img-country" src="${el.flags.svg}" alt="flag" width=50>${
@@ -55,7 +55,7 @@ function renderContryCard(response) {
     )
     .join("");
 
-  refs.cardCountry.innerHTML = markup;
+  refs.cardCountry.innerHTML = markupCountryCard;
 }
 
 function renderSearchCountry(response) {
