@@ -16,8 +16,8 @@ function inputReader(e) {
   }
   fetchCountries(name)
     .then(response => {
-      console.log(response.length);
-      renderContryCard({ response })
+      // console.log(response.length);
+      renderContryCard(response)
       if (response.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
@@ -26,7 +26,7 @@ function inputReader(e) {
       if (response.length === 1) {
         let markup;
         markup = response.map(el => {
-            renderContryCard({ response });
+            renderContryCard(response);
           })
           // renderContryCard({ response });
           refs.listCountry.innerHTML = markup
@@ -38,9 +38,9 @@ function inputReader(e) {
     .catch(error => console.log(error));
   refs.cardCountry.innerHTML = '';
 };
-function renderContryCard({name: {official}, capital,population,flags: {png},languages}) {
+function renderContryCard({ name, capital, population, flags, languages }) {
     // const {name,capital,population,flags,languages} = country
-  const markup = `<h1 class="country"><img src="${flags.png}" alt="flag">${name.official}</h1>
+  const markup = `<h1 class="country"><img src="${flags.svg}" alt="flag">${name.official}</h1>
     <p class="capital">Capital: ${capital}</p>
     <p class="population">Population: ${population}</p>
     <p class="languages">Languages: ${language}</p>`
@@ -48,7 +48,7 @@ function renderContryCard({name: {official}, capital,population,flags: {png},lan
     refs.cardCountry.innerHTML = markup;
 };
 
-function renderSearchCountry({ flags: { png }, name: { official } }) {
+function renderSearchCountry({ flags, name }) {
   const markupList = 
   `<li>
       <img src="${flags.png}" alt="flag">
