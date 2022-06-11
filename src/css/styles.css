@@ -40,4 +40,8 @@ img {
 
 .country {
   display: flex;
+  margin-bottom: 25px;
+}
+.img-country {
+  margin-right: 10px;
 }

@@ -46,7 +46,7 @@ function renderContryCard(response) {
   const markup = response
     .map(
       el =>
-        `<h1 class="country"><img src="${el.flags.svg}" alt="flag" width=40>${
+        `<h1 class="country"><img class="img-country" src="${el.flags.svg}" alt="flag" width=50>${
           el.name.official
         }</h1>
     <p class="capital"><b>Capital:</b> ${el.capital}</p>
