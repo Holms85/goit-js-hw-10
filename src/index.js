@@ -12,12 +12,12 @@ const refs = {
 refs.input.addEventListener('input', debounce(inputReader, DEBOUNCE_DELAY));
 function inputReader(e) {
   const name = e.target.value.trim();
-
+if (name === "") {
+        return;
+}
+  
   fetchCountries(name)
     .then(response => {
-      if (name === '') {
-        return;
-      }
       if (response.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
@@ -29,7 +29,6 @@ function inputReader(e) {
         markup = response.map(el => {
           renderContryCard(response);
         });
-        refs.listCountry.innerHTML = markup;
       }
       if (response.length >= 2 && response.length <= 10) {
         renderSearchCountry(response);
